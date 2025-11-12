@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dev Tenant Renewal</title>
+    <script src="https://alcdn.msauth.net/browser/2.25.0/js/msal-browser.min.js"></script>
+</head>
+<body>
+    <h2>Sign in to Dev Tenant</h2>
+    <button id="signin">Sign In</button>
+    <p id="message"></p>
+
+    <script>
+        const msalConfig = {
+            auth: {
+                clientId: "5bac79a9-ece7-4b97-92b4-e84611838f23",
+                redirectUri: "http://localhost"
+            }
+        };
+
+        const msalInstance = new msal.PublicClientApplication(msalConfig);
+
+        document.getElementById("signin").onclick = function () {
+            msalInstance.loginPopup({ scopes: ["user.read"] })
+                .then(response => {
+                    document.getElementById("message").innerText = `Hello, ${response.account.username}`;
+                })
+                .catch(error => {
+                    document.getElementById("message").innerText = `Error: ${error}`;
+                });
+        };
+    </script>
+</body>
+</html>

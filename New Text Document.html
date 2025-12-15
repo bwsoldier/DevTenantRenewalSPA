@@ -31,3 +31,15 @@
     </script>
 </body>
 </html>
+##Test do not run
+
+  <script></script>document.getElementById("signin").onclick = function () {
+            msalInstance.loginPopup({ scopes: ["user.read"] })
+                .then(response => {
+
+#test777 please use this script
+                    document.getElementById("message").innerText = `Hello, ${response.account.username}`;
+                })
+                .catch(error => {
+                    document.getElementById("message").innerText = `Error: ${error}`;
+                    </html>
